@@ -1,0 +1,202 @@
+[
+    {
+      "category": "science fiction",
+      "description": "A mind-bending science fiction novel that explores the concept of time travel.",
+      "id": 1,
+      "image": "https://example.com/book1.jpg",
+      "isOpen": true,
+      "name": "The Time Traveler's Wife",
+      "price": 12.99,
+      "rating": 4.5
+    },
+    {
+      "category": "science fiction",
+      "description": "An epic space opera set in a distant future where interstellar travel is possible.",
+      "id": 2,
+      "image": "https://example.com/book2.jpg",
+      "isOpen": true,
+      "name": "Dune",
+      "price": 14.99,
+      "rating": 4.8
+    },
+    {
+      "category": "science fiction",
+      "description": "A thrilling story of a dystopian society ruled by an authoritarian regime.",
+      "id": 3,
+      "image": "https://example.com/book3.jpg",
+      "isOpen": true,
+      "name": "1984",
+      "price": 9.99,
+      "rating": 4.6
+    },
+    {
+      "category": "science fiction",
+      "description": "A classic science fiction novel that explores the concept of artificial intelligence.",
+      "id": 4,
+      "image": "https://example.com/book4.jpg",
+      "isOpen": true,
+      "name": "Neuromancer",
+      "price": 11.99,
+      "rating": 4.3
+    },
+    {
+      "category": "science fiction",
+      "description": "A gripping tale of survival on a distant planet.",
+      "id": 5,
+      "image": "https://example.com/book5.jpg",
+      "isOpen": true,
+      "name": "The Martian",
+      "price": 10.99,
+      "rating": 4.7
+    },
+    {
+      "category": "science fiction",
+      "description": "A thought-provoking novel that delves into the ethical implications of gene editing.",
+      "id": 6,
+      "image": "https://example.com/book6.jpg",
+      "isOpen": true,
+      "name": "Brave New World",
+      "price": 13.99,
+      "rating": 4.4
+    },
+    {
+      "category": "science fiction",
+      "description": "A mind-bending exploration of parallel universes and alternate realities.",
+      "id": 7,
+      "image": "https://example.com/book7.jpg",
+      "isOpen": true,
+      "name": "Dark Matter",
+      "price": 12.99,
+      "rating": 4.5
+    },
+    {
+      "category": "science fiction",
+      "description": "An imaginative tale of a future where humanity has colonized other planets.",
+      "id": 8,
+      "image": "https://example.com/book8.jpg",
+      "isOpen": true,
+      "name": "Red Mars",
+      "price": 14.99,
+      "rating": 4.8
+    },
+    {
+      "category": "science fiction",
+      "description": "A thrilling adventure through space and time.",
+      "id": 9,
+      "image": "https://example.com/book9.jpg",
+      "isOpen": true,
+      "name": "Foundation",
+      "price": 9.99,
+      "rating": 4.6
+    },
+    {
+      "category": "science fiction",
+      "description": "A mind-bending exploration of the nature of reality.",
+      "id": 10,
+      "image": "https://example.com/book10.jpg",
+      "isOpen": true,
+      "name": "Blindsight",
+      "price": 11.99,
+      "rating": 4.3
+    },
+    {
+      "category": "science fiction",
+      "description": "A gripping tale of a future society divided into factions based on virtues.",
+      "id": 11,
+      "image": "https://example.com/book11.jpg",
+      "isOpen": true,
+      "name": "Divergent",
+      "price": 10.99,
+      "rating": 4.7
+    },
+    {
+      "category": "science fiction",
+      "description": "A thought-provoking exploration of the consequences of advanced technology.",
+      "id": 12,
+      "image": "https://example.com/book12.jpg",
+      "isOpen": true,
+      "name": "The Three-Body Problem",
+      "price": 13.99,
+      "rating": 4.4
+    },
+    {
+      "category": "science fiction",
+      "description": "A mind-bending thriller set in a future where memories can be manipulated.",
+      "id": 13,
+      "image": "https://example.com/book13.jpg",
+      "isOpen": true,
+      "name": "Recursion",
+      "price": 12.99,
+      "rating": 4.5
+    },
+    {
+      "category": "science fiction",
+      "description": "An epic space opera filled with political intrigue and interstellar conflict.",
+      "id": 14,
+      "image": "https://example.com/book14.jpg",
+      "isOpen": true,
+      "name": "Hyperion",
+      "price": 14.99,
+      "rating": 4.8
+    },
+    {
+      "category": "science fiction",
+      "description": "A dystopian tale of a society where emotions are suppressed.",
+      "id": 15,
+      "image": "https://example.com/book15.jpg",
+      "isOpen": true,
+      "name": "Fahrenheit 451",
+      "price": 9.99,
+      "rating": 4.6
+    },
+    {
+      "category": "science fiction",
+      "description": "A mind-bending exploration of the concept of multiple dimensions.",
+      "id": 16,
+      "image": "https://example.com/book16.jpg",
+      "isOpen": true,
+      "name": "Flatland",
+      "price": 11.99,
+      "rating": 4.3
+    },
+    {
+      "category": "science fiction",
+      "description": "A thrilling adventure through a post-apocalyptic wasteland.",
+      "id": 17,
+      "image": "https://example.com/book17.jpg",
+      "isOpen": true,
+      "name": "The Road",
+      "price": 10.99,
+      "rating": 4.7
+    },
+    {
+      "category": "science fiction",
+      "description": "A thought-provoking exploration of the ethical implications of advanced robotics.",
+      "id": 18,
+      "image": "https://example.com/book18.jpg",
+      "isOpen": true,
+      "name": "Do Androids Dream of Electric Sheep?",
+      "price": 13.99,
+      "rating": 4.4
+    },
+    {
+      "category": "science fiction",
+      "description": "A mind-bending journey through time and space.",
+      "id": 19,
+      "image": "https://example.com/book19.jpg",
+      "isOpen": true,
+      "name": "A Wrinkle in Time",
+      "price": 12.99,
+      "rating": 4.5
+    },
+    {
+      "category": "science fiction",
+      "description": "An epic space opera filled with alien civilizations and galactic wars.",
+      "id": 20,
+      "image": "https://example.com/book20.jpg",
+      "isOpen": true,
+      "name": "Ender's Game",
+      "price": 14.99,
+      "rating": 4.8
+    }
+  ]
