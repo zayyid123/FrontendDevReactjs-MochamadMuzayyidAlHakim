@@ -1,4 +1,5 @@
-[
+{
+  "restaurant": [
     {
       "category": "science fiction",
       "description": "A mind-bending science fiction novel that explores the concept of time travel.",
@@ -200,3 +201,4 @@
       "rating": 4.8
     }
   ]
+}
