@@ -61,12 +61,12 @@ export default function Home() {
 
   const handleClearAll = async() => {
     setisLoading(true)
-    setitemFilter({
+    await setitemFilter({
       isOpen: false,
       price: '',
       categories: ''
     })
-    const res = await GetAllDataRestaurant(1, limitData, itemFilter.categories)
+    const res = await GetAllDataRestaurant(1, limitData, '')
     setallDataRestaurant(res.data)
 
     setisLoading(false)
