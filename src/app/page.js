@@ -9,6 +9,16 @@ export default function Home() {
   const [allDataRestaurant, setallDataRestaurant] = useState()
   const [allDataCategoryRestaurant, setallDataCategoryRestaurant] = useState()
   const [isLoading, setisLoading] = useState(false)
+  const [limitData, setlimitData] = useState(5)
+  const [itemFilter, setitemFilter] = useState({
+    isOpen: false,
+    price: '',
+    categories: ''
+  })
+
+  const handleChangeFilter = (key, value) => {
+    setitemFilter({...itemFilter, [key]: value})
+  }
 
   const checkDuplicateCategory = (myData) => {
     const duplicateCheck = [];
@@ -24,21 +34,37 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const getAllDataResto = async() => {
-      const res = await GetAllDataRestaurant()
-      setallDataRestaurant(res.data)
+    const getAllCategory = async () => {
+      const res = await GetAllDataRestaurant(1, 20);
 
       setallDataCategoryRestaurant(checkDuplicateCategory(res.data))
     }
 
-    getAllDataResto()
+    getAllCategory()
   }, [])
 
+  useEffect(() => {
+    const getAllDataResto = async() => {
+      setisLoading(true)
+      const res = await GetAllDataRestaurant(1, limitData, itemFilter.categories)
+      setallDataRestaurant(res.data)
+
+      setisLoading(false)
+    }
+
+    getAllDataResto()
+  }, [limitData, itemFilter.categories])
+
   const handleChangeLoadMore = async (limit) => {
-    setisLoading(true)
-    const res = await GetAllDataRestaurant(1, limit)
-    setallDataRestaurant(res.data)
-    setisLoading(false)
+    setlimitData(limit)
+  }
+
+  const handleClearAll = () => {
+    setitemFilter({
+      isOpen: false,
+      price: '',
+      categories: ''
+    })
   }
 
   return (
@@ -59,13 +85,28 @@ export default function Home() {
 
             {/* filter open */}
             <div className='flex justify-start items-center ml-3 mr-3 my-2 border-b-2 py-2'>
-              <input id='openfilter' type="checkbox" className='appearance-none w-[1.3em] h-[1.3em] bg-white rounded-[50%] border-2 cursor-pointer outline-none checked:bg-blue-500 checked:border-blue-300'/>
+              <input 
+                id='openfilter' 
+                type="checkbox" 
+                checked={itemFilter.isOpen}
+                className='appearance-none w-[1.3em] h-[1.3em] bg-white rounded-[50%] border-2 cursor-pointer outline-none checked:bg-blue-500 checked:border-blue-300'
+                onChange={(e) => {
+                  handleChangeFilter('isOpen', e.target.checked)
+                }}
+              />
               <label htmlFor='openfilter' className='cursor-pointer pl-2'>Open Now</label>
             </div>
 
             {/* filter price */}
             <div className='ml-3 mr-3 my-2 border-b-2 py-2'>
-              <select name="price" id="price">
+              <select 
+                value={itemFilter.price}
+                name="price" 
+                id="price"
+                onChange={(e) => {
+                  handleChangeFilter('price', e.target.value)
+                }}
+              >
                 <option value="">Price</option>
                 <option value="cheapest">Cheapest</option>
                 <option value="most_expensive">Most Expensive</option>
@@ -74,7 +115,14 @@ export default function Home() {
 
             {/* filter categories */}
             <div className='ml-3 mr-3 my-2 border-b-2 py-2'>
-              <select name="price" id="price">
+              <select 
+                name="price" 
+                id="price"
+                value={itemFilter.categories}
+                onChange={(e) => {
+                  handleChangeFilter('categories', e.target.value)
+                }}
+              >
                 <option value="">Categories</option>
                 {
                   allDataCategoryRestaurant &&
@@ -87,7 +135,12 @@ export default function Home() {
           </div>
 
           <div>
-            <div className='cursor-pointer px-6 py-2 border-2 hover:bg-blue-500 hover:text-white hover:border-blue-200'>CLEAR ALL</div>
+            <div 
+              className='cursor-pointer px-6 py-2 border-2 hover:bg-blue-500 hover:text-white hover:border-blue-200'
+              onClick={() => {handleClearAll()}}
+            >
+              CLEAR ALL
+            </div>
           </div>
         </div>
 
@@ -101,8 +154,11 @@ export default function Home() {
         {/* map card */}
         <div className='flex justify-center md:justify-start flex-wrap'>
           {
-            allDataRestaurant ?
-            allDataRestaurant.map((res, index) => 
+            (allDataRestaurant) ?
+            allDataRestaurant
+            .sort((a, b) => itemFilter.price === '' ? '' : itemFilter.price === 'cheapest' ? a.price - b.price : b.price - a.price)
+            .filter((data) => itemFilter.isOpen ? data.isOpen === true : data)
+            .map((res, index) => 
               <div key={'cardResto'+index}>
                 <CardResto 
                   id={res.id} 
