@@ -3,10 +3,12 @@ import Image from 'next/image'
 import { GetAllDataRestaurant } from './services/services'
 import { useEffect, useState } from 'react'
 import CardResto from './components/CardResto'
+import Loading from './components/Loading'
 
 export default function Home() {
   const [allDataRestaurant, setallDataRestaurant] = useState()
   const [allDataCategoryRestaurant, setallDataCategoryRestaurant] = useState()
+  const [isLoading, setisLoading] = useState(false)
 
   const checkDuplicateCategory = (myData) => {
     const duplicateCheck = [];
@@ -33,8 +35,10 @@ export default function Home() {
   }, [])
 
   const handleChangeLoadMore = async (limit) => {
+    setisLoading(true)
     const res = await GetAllDataRestaurant(1, limit)
     setallDataRestaurant(res.data)
+    setisLoading(false)
   }
 
   return (
@@ -97,7 +101,7 @@ export default function Home() {
         {/* map card */}
         <div className='flex justify-center md:justify-start flex-wrap'>
           {
-            allDataRestaurant &&
+            allDataRestaurant ?
             allDataRestaurant.map((res, index) => 
               <div key={'cardResto'+index}>
                 <CardResto 
@@ -111,24 +115,35 @@ export default function Home() {
                 />
               </div>
             )
+            :
+            <div className='flex justify-center items-center w-full h-[300px]'>
+              <Loading/>
+            </div>
           }
         </div>
       </div>
 
       {/* button load more */}
-      <div className='my-8 flex justify-center'>
-        {
-          allDataRestaurant &&
-          <div 
-            className='border-2 border-black w-[40%] py-2 text-center cursor-pointer hover:bg-[#002B56] hover:text-white'
-            onClick={() => {
-              handleChangeLoadMore(allDataRestaurant.length + 5)
-            }}
-          >
-            Load More
-          </div>
-        }
-      </div>
+      {
+        allDataRestaurant &&
+        <div className='my-8 flex justify-center'>
+          {
+            !isLoading ?
+            <div 
+              className='border-2 border-black w-[40%] py-2 text-center cursor-pointer hover:bg-[#002B56] hover:text-white'
+              onClick={() => {
+                handleChangeLoadMore(allDataRestaurant.length + 5)
+              }}
+            >
+              Load More
+            </div>
+            :
+            <div className='flex justify-center items-center w-full my-8'>
+              <Loading/>
+            </div>
+          }
+        </div>
+      }
     </div>
   )
 }
