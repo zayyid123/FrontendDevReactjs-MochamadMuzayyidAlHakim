@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import Rating from './Ratting'
 
 const CardResto = ({ id, name, rating, category, isOpen, image, price }) => {
   return (
@@ -10,7 +11,9 @@ const CardResto = ({ id, name, rating, category, isOpen, image, price }) => {
       <div className='mt-3'>{name}</div>
 
       {/* rating */}
-      <div>***</div>
+      <div>
+        <Rating value={rating} color={'black'} text={rating}/>
+      </div>
 
       {/* merged category and is open */}
       <div className='flex justify-between'>

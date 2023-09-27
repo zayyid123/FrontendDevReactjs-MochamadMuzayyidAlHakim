@@ -28,7 +28,7 @@
       "isOpen": true,
       "name": "El Mariachi",
       "price": 2,
-      "rating": 4
+      "rating": 3
     },
     {
       "category": "indian restaurant",
@@ -48,7 +48,7 @@
       "isOpen": true,
       "name": "Sakura Sushi",
       "price": 4,
-      "rating": 4.7
+      "rating": 5
     },
     {
       "category": "steakhouse",
