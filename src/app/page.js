@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import { GetAllDataRestaurant } from './services/services'
 import { useEffect, useState } from 'react'
+import CardResto from './components/CardResto'
 
 export default function Home() {
   const [allDataRestaurant, setallDataRestaurant] = useState()
@@ -30,6 +31,11 @@ export default function Home() {
 
     getAllDataResto()
   }, [])
+
+  const handleChangeLoadMore = async (limit) => {
+    const res = await GetAllDataRestaurant(1, limit)
+    setallDataRestaurant(res.data)
+  }
 
   return (
     <div>
@@ -85,6 +91,44 @@ export default function Home() {
       </div>
 
       {/* card */}
+      <div className='px-10 pt-10'>
+        <div className='mb-5 text-3xl'>All Restaurants</div>
+
+        {/* map card */}
+        <div className='flex justify-center md:justify-start flex-wrap'>
+          {
+            allDataRestaurant &&
+            allDataRestaurant.map((res, index) => 
+              <div key={'cardResto'+index}>
+                <CardResto 
+                  id={res.id} 
+                  name={res.name} 
+                  rating={res.rating} 
+                  category={res.category} 
+                  isOpen={res.isOpen} 
+                  image={res.image} 
+                  price={res.price}
+                />
+              </div>
+            )
+          }
+        </div>
+      </div>
+
+      {/* button load more */}
+      <div className='my-8 flex justify-center'>
+        {
+          allDataRestaurant &&
+          <div 
+            className='border-2 border-black w-[40%] py-2 text-center cursor-pointer hover:bg-[#002B56] hover:text-white'
+            onClick={() => {
+              handleChangeLoadMore(allDataRestaurant.length + 5)
+            }}
+          >
+            Load More
+          </div>
+        }
+      </div>
     </div>
   )
 }
