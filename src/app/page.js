@@ -59,12 +59,17 @@ export default function Home() {
     setlimitData(limit)
   }
 
-  const handleClearAll = () => {
+  const handleClearAll = async() => {
+    setisLoading(true)
     setitemFilter({
       isOpen: false,
       price: '',
       categories: ''
     })
+    const res = await GetAllDataRestaurant(1, limitData, itemFilter.categories)
+    setallDataRestaurant(res.data)
+
+    setisLoading(false)
   }
 
   return (

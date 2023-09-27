@@ -1,8 +1,11 @@
 import Image from 'next/image'
 import React from 'react'
 import Rating from './Ratting'
+import { useRouter } from 'next/navigation'
 
 const CardResto = ({ id, name, rating, category, isOpen, image, price }) => {
+  const router = useRouter()
+
   return (
     <div className='p-4'>
       <Image src={image} alt={name} width={260} height={300}/>
@@ -39,7 +42,14 @@ const CardResto = ({ id, name, rating, category, isOpen, image, price }) => {
 
       {/* button learn more */}
       <div className='mt-6'>
-        <div className='bg-[#002B56] text-center text-white py-2 cursor-pointer hover:bg-gray-600'>LEARN MORE</div>
+        <div 
+          className='bg-[#002B56] text-center text-white py-2 cursor-pointer hover:bg-gray-600'
+          onClick={() => {
+            router.push(`/detail/${id}`)
+          }}
+        >
+          LEARN MORE
+        </div>
       </div>
     </div>
   )
